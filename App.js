@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Container, Header, Content, H1, Button, Text } from 'native-base'
+import ProductList from './ProductList';
+import Rating from './Rating';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  const user = {
+    firstName: 'Greg',
+    lastName: 'Lim'
+  }
+  const isValid = true
+
+  return (
+    <Container>
+      <Header />
+      <Content>
+        <Button disabled={!isValid} >
+          <Text>Click here</Text>
+        </Button>
+        <Button danger>
+          <Text>danger</Text>
+        </Button>
+        <H1> Hello,</H1>
+        <Text> {formatName(user)} </Text>
+        <Rating rating='1' />
+        <Rating rating='0' />
+        <Rating rating='3' />
+      </Content>
+    </Container>
+  );
+}
